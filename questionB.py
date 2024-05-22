@@ -6,8 +6,8 @@ def compare_version(version1, version2):
     v1Split = version1.split('.')
     v2Split = version2.split('.')
     maxLen = max(len(v1Split), len(v2Split))
-    v1Split += [0] * (maxLen - len(v1Split))
-    v2Split += [0] * (maxLen - len(v2Split))
+    v1Split += ['0'] * (maxLen - len(v1Split))
+    v2Split += ['0'] * (maxLen - len(v2Split))
     for i in range(maxLen):
         if v1Split[i] > v2Split[i]:
             return 1
@@ -18,15 +18,25 @@ def compare_version(version1, version2):
 import unittest
 
 class TestCompareVersion(unittest.TestCase):
-    def test_equal_versions(self):  # test case 1: equal versions
+    def test_equal_versions(self):  # equal versions
         self.assertEqual(compare_version('1.1', '1.1'), 0)
 
-    def test_greater_version(self):  # test case 2: greater version
+    def test_equal_versions_2(self):  # equal versions
+        self.assertEqual(compare_version('1.0', '1'), 0)
+    
+    def test_alphabetical_versions(self):  # alphabetical versions
+        self.assertEqual(compare_version('1.a', '1.b'), -1)
+
+    def test_greater_version(self):  # greater version
         self.assertEqual(compare_version('1.2', '1.1'), 1)
 
-    def test_lesser_version(self):  # test case 3: lesser version
+    def test_lesser_version(self):  # lesser version
         self.assertEqual(compare_version('1.1', '1.2'), -1)
 
-    def test_different_length_versions(self):  # test case 4: versions with different length
+    def test_different_length_versions(self):  # versions with different length
         self.assertEqual(compare_version('1.1.1', '1.1'), 1)
         self.assertEqual(compare_version('1.1', '1.1.1'), -1)
+    
+
+if __name__ == '__main__':
+    unittest.main()
