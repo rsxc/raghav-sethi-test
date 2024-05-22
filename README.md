@@ -34,3 +34,12 @@ This library will be used extensively by many of our services so it needs to mee
     6 - Flexible Schema
 
     7 - Cache can expire 
+
+
+simply do this to run the code
+
+python questionA.py
+
+or
+
+python3 questionA.py
