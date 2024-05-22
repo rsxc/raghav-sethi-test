@@ -27,6 +27,9 @@ class TestCompareVersion(unittest.TestCase):
     def test_alphabetical_versions(self):  # alphabetical versions
         self.assertEqual(compare_version('1.a', '1.b'), -1)
 
+    def test_alphabetical_versions(self):  # alphabetical versions
+        self.assertEqual(compare_version('1a', '1.a'), 1)
+
     def test_greater_version(self):  # greater version
         self.assertEqual(compare_version('1.2', '1.1'), 1)
 
