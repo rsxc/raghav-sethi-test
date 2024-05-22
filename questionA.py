@@ -46,6 +46,9 @@ class TestLinesOverlap(unittest.TestCase):
         # --1-----4-5-------
         self.assertTrue(lines_overlap((1, 5), (4, 5)))
 
+    def test_lines_with_negative_ending_points(self):  # test case 8: lines with equal ending points
+        # --1-----4-5-------
+        self.assertTrue(lines_overlap((-4, 5), (4, 5)))
 
 if __name__ == '__main__':
     unittest.main()
